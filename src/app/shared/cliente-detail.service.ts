@@ -15,7 +15,7 @@ export class ClienteDetailService {
   constructor(private http: HttpClient) { }
 
   ListClienteDetail() {
-    return this.http.get(this.baseURL+"/ListClientes").pipe(
+    return this.http.get(this.baseURL+"/api/Cliente/ListClientes").pipe(
       map((response: any) => {
         return response['data'];
       })
@@ -23,7 +23,7 @@ export class ClienteDetailService {
   }
 
   GetClientesKpi() {
-    return this.http.get(this.baseURL+"/KpiDeClientes").pipe(
+    return this.http.get(this.baseURL+"/api/Cliente/KpiDeClientes").pipe(
       map((response: any) => {
         return response['data'];
       })
@@ -31,7 +31,7 @@ export class ClienteDetailService {
   }
 
   InsertClienteDetail(params: any) {
-    return this.http.post(this.baseURL+"/CreaCliente", params).pipe(
+    return this.http.post(this.baseURL+"/api/Cliente/CreaCliente", params).pipe(
       map((response: any) => {
         return response;
       })
@@ -39,7 +39,7 @@ export class ClienteDetailService {
   }
 
   DeleteClienteDetail(id: string) {
-    return this.http.delete(this.baseURL+"/"+id).pipe(
+    return this.http.delete(this.baseURL+"/api/Cliente/"+id).pipe(
       map((response: any) => {
         return response;
       })
