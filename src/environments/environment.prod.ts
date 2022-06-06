@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'http://localhost:39874',
+  api: 'https://valued-plane-352519.appspot.com',
 };
