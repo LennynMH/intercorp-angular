@@ -1,0 +1,40 @@
+<qsi-modal (close)="closeModal($event)" [title]="tituloModal">
+    <form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+        <input type="hidden" name="Id" [value]="cliente.id" />
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre Cliente" name="Nombre"
+            #Nombre="ngModel" [(ngModel)]="cliente.nombre" 
+            required [class.invalid]="Nombre.invalid && Nombre.touched">
+        </div>
+        <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" class="form-control" placeholder="Apellido Cliente" name="Apellido"
+            #Apellido="ngModel" [(ngModel)]="cliente.apellido"
+            required [class.invalid]="Apellido.invalid && Apellido.touched">
+        </div>
+        <div class="form-group">
+            <label>Edad</label>
+            <input type="number" class="form-control" placeholder="Edad Cliente" name="Edad"
+            #Edad="ngModel" [(ngModel)]="cliente.edad"
+            required [class.invalid]="Edad.invalid && Edad.touched">
+        </div>
+        <div class="form-group">
+            <label>Fecha Nacimiento</label>
+            <mat-form-field class="form-control">
+                <input matInput [matDatepicker]="picker" name="fechaNacimiento" #fechaNacimiento="ngModel" [(ngModel)]="fecha"
+                required [class.invalid]="fechaNacimiento.invalid && fechaNacimiento.touched">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-info btn-block" type="submit" [disabled]="form.invalid">Guardar</button>
+        </div>
+    </form>
+</qsi-modal>
+<style>
+    ::ng-deep .cdk-overlay-container {
+      z-index: 2000;
+    }
+  </style>

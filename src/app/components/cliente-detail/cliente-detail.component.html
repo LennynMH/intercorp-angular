@@ -1,0 +1,42 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Mantenimiento Clientes</h1>
+</div>
+<div class="row">
+    <div class="">
+        <button class="btn btn-success rounded-pill px-5" type="button" (click)="OpenCreateCliente()">Nuevo</button>
+        <button class="btn btn-primary rounded-pill px-5" type="button" (click)="ListClienteDetail()">Listar</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Fecha Posible Muerte</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cl of service.list">
+                    <td>{{cl.nombre}}</td>
+                    <td>{{cl.apellido}}</td>
+                    <td>{{cl.edad}}</td>
+                    <td>{{cl.fechaNacimiento}}</td>
+                    <td>{{cl.fechaProbableMuerte}}</td>
+                    <td>
+                        <i class="far fa-trash-alt fa-lg text-danger" (click)="DeleteClient(cl.id)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<qsi-app-cliente-detail-form
+    (eventInsertClient)="InsertClient($event)"
+    (close)="isOpenModal = $event"
+    *ngIf="isOpenModal">
+</qsi-app-cliente-detail-form>
